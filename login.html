@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilosGeneral.css">
+    <link rel="stylesheet" href="estilosLogin.css">
+    <title>Login</title>
+</head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <a href="index.html"><img class="logo" src="img/titulo.png"></a>
+        </div>
+        <div class="buscador">
+            <input type="text" name="buscador" id="buscador" placeholder="Buscador">
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="" class="nav-link">Biblioteca</a>
+            <a href="" class="nav-link">Categoria</a>    
+        </nav>
+        <div class="perfil">
+            <div class="usuario">
+                <a href="registro.html">
+                <img src="img/userIcon.png">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="pnlRegistro">
+        <h1>Iniciar Sesion</h1>
+        <form>
+            <label for="txtNombreUsuario">Nombre de usuario</label><br>
+            <input type="text" name="txtNombreUsuario" id="txtNombreUsuario"><br>
+            <label for="txtContrasena">Contraseña</label><br>
+            <input type="password" name="txtContrasena" id="txtContrasena"><br>
+            <button class="btnLogin" >Iniciar Sesion</button>
+        </form>
+        <p class="registro">¿Aún no cuentas con una cuenta? <a href="registro.html">Crear cuenta...</a></p>
+    </div>
+</body>
+</html>
