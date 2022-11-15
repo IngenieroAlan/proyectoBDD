@@ -1,0 +1,248 @@
+#+TITLE: Base de datos 2
+#+SUBTITLE: Documento del proyecto final de base de datos II
+#+AUTHOR: Adalberto Garcia Mancillas
+#+DATE: <2022-11-05 Sat>
+#+EMAIL: adalbertog_20@alu.uabcs.mx
+#+LANGUAGE: es
+#+OPTIONS: coverpage:yes
+#+STARTUP: fold
+
+* Creacion de la base de datos
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
+#+begin_src sql
+DROP DATABASE IF EXISTS comics;
+CREATE DATABASE comics;
+USE comics;
+#+end_src
+
+* Creando la tabla /categoria de producto/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
++ La tabla categoria cuenta con el campo nombre de la cateogoria que sera,
+  1. Comic.
+  2. Manga.
+  3. Libro.
+#+begin_src sql
+DROP TABLE IF EXISTS categoria_producto;
+CREATE TABLE categoria_producto (
+  id_categoria_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre ENUM('Comic', 'Manga', 'Libro') NOT NULL,
+  descripcion VARCHAR(100)
+);
+#+end_src
+
+#+RESULTS:
+|---|
+* Creando la tabla /imagen/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
++ La tabla imagen nos ayuda a poder identificar la ruta especifica
+  de la portada del producto
+#+begin_src sql
+DROP TABLE IF EXISTS imagen;
+CREATE TABLE imagen (
+  id_imagen INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ruta_imagen VARCHAR(100) NOT NULL
+);
+#+end_src
+
+#+RESULTS:
+|---|
+* Creando la tabla /marca/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
++ La tabla marca contiene toda la informacion acerca de
+  la marca detras del producto.
+#+begin_src sql
+DROP TABLE IF EXISTS marca;
+CREATE TABLE marca (
+  id_marca INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(100),
+  pagina VARCHAR(100) NOT NULL
+);
+#+end_src
+
+#+RESULTS:
+|---|
+* Creando la tabla /usuario/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
+#+begin_src sql
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario(
+  id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  contrasena VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  fecha_nacimiento DATE NOT NULL
+);
+#+end_src
+
+#+RESULTS:
+|---|
+* Creando la tabla /producto/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
++ En este apartado declararemos la tabla producto
+  que contrara con un nombre, descripcion, precio, stock, e idiom, no quisimos
+  nombrar la tabla comic ya que en nuestro sistema no solo manejaremos comics
+  si no tambien manejaremos mangas y libros, asi que decidimos llamarla producto.
+#+begin_src sql
+DROP TABLE IF EXISTS producto;
+CREATE TABLE producto (
+  id_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(100) NOT NULL,
+  precio FLOAT NOT NULL,
+  stock INT NOT NULL,
+  idioma ENUM('ESPANOL', 'INGLES', 'JAPONES') NOT NULL,
+  id_categoria_producto INT NOT NULL,
+  id_imagen INT NOT NULL,
+  id_marca INT NOT NULL,
+
+  FOREIGN KEY (id_categoria_producto)
+  REFERENCES categoria_producto(id_categoria_producto)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+
+  FOREIGN KEY (id_imagen) REFERENCES imagen(id_imagen)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+
+  FOREIGN KEY (id_marca) REFERENCES marca(id_marca)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+#+end_src
++ En la tabla producto contamos con 3 llaves foraneas asia
+  diferentes tablas, estas son:
+  1. *Categoria producto:*
+     aqui se va a declara si el producto es un comic, manga o libro.
+  2. *Imagen:*
+     Esta tabla nos servira para identificar las imagenes o portadas de
+     cada producto.
+  3. *Marca:*
+     Esta llave nos ayuda a identificar que marca esta detras del producto.
+* Creando la tabla /detalle_venta/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
+#+begin_src sql
+  DROP TABLE IF EXISTS detalle_venta;
+  CREATE TABLE detalle_venta(
+    id_detalle_venta INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cantidad INT NOT NULL,
+    fecha_venta DATE NOT NULL,
+    monto_venta FLOAT NOT NULL,
+    descripcion_venta VARCHAR(500) NOT NULL,
+    id_producto INT NOT NULL,
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto) ON UPDATE CASCADE ON DELETE CASCADE
+  );
+#+end_src
+
+#+RESULTS:
+|---|
+* Creando la tabla /venta/
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:header-args+: :results silent
+:END:
+#+begin_src sql
+DROP TABLE IF EXISTS venta;
+CREATE TABLE venta(
+  id_venta INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  id_detalle_venta INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (id_detalle_venta) REFERENCES detalle_venta(id_detalle_venta) ON UPDATE CASCADE ON DELETE CASCADE
+);
+#+end_src
+
+#+RESULTS:
+|---|
+* test
+:PROPERTIES:
+:header-args+: :results playground
+:header-args+: :engine mysql
+:header-args+: :dbhost localhost
+:header-args+: :database comics
+:header-args+: :dbuser root
+:header-args+: :dbpassword root
+:header-args+: :dbport 3306
+:header-args+: :tangle comics.sql
+:END:
+#+begin_src sql
+INSERT INTO imagen(ruta_imagen) values("/home/rusty/Downloads/gruv.png");
+INSERT INTO categoria_producto( nombre, descripcion) values('Comic', 'Historieta infantil');
+INSERT INTO marca(nombre, descripcion, pagina) VALUES('Detective Comics', 'dc', 'dc.com');
+INSERT INTO producto(nombre, descripcion, precio, stock, idioma, id_categoria_producto, id_imagen, id_marca) VALUES('Batman Tomo 1', 'primera aparicion de batman', 234, 10, 'INGLES', 1, 1, 1);
+INSERT INTO usuario(usuario, contrasena, email, fecha_nacimiento) VALUES ('rusty', MD5('EOhlHhhfOApFT'), 'rustytheguy2@gmail.com', '2003-03-01');
+#+end_src
