@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilosGeneral.css">
+    <link rel="stylesheet" href="estilosRegistrar.css">
+    <title>Registrar</title>
+</head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <a href="index.html"><img class="logo" src="img/titulo.png"></a>
+        </div>
+        <div class="buscador">
+            <input type="text" name="buscador" id="buscador" placeholder="Buscador">
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="" class="nav-link">Biblioteca</a>
+            <a href="" class="nav-link">Categoria</a>    
+        </nav>
+        <div class="perfil">
+            <div class="usuario">
+                <a href="registro.html">
+                <img src="img/userIcon.png">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="pnlRegistro">
+        <h1>CREA TU CUENTA</h1>
+        <form>
+            <label for="txtNombre">Nombre completo</label><br>
+            <input type="text" name="txtNombre" id="txtNombre"><br>
+            <label for="txtNombreUsuario">Nombre de usuario</label><br>
+            <input type="text" name="txtNombreUsuario" id="txtNombreUsuario"><br>
+            <label for="txtCorreo">Correo electronico</label><br>
+            <input type="text" name="txtCorreo" id="txtCorreo"><br>
+            <label for="txtContrasena">Contraseña</label><br>
+            <input type="password" name="txtContrasena" id="txtContrasena"><br>
+            <label for="cmbFechaNacimiento">Fecha de Nacimiento</label><br>
+            <input type="date" value="2022-11-15" max="2022-11-15"><br>
+            <button class="btnRegistrar" >Registrar</button>
+        </form>
+    </div>
+</body>
+</html>

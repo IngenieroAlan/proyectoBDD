@@ -1,0 +1,57 @@
+body{
+    text-align: center;
+}
+.pnlRegistro{
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 50px;
+    width: 60%;
+    background-color: #A01212;
+    color: white;
+    height: auto;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+div h1{
+    margin: 0px auto;
+    font-size: 20px;
+    padding: 10px;
+    text-decoration: none;
+}
+form{
+    margin: 0px auto;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+}
+input{
+    margin-bottom: 20px;
+    width: 60%;
+
+}
+input[type=text],input[type=password]{
+    padding: 5px;
+}
+input[type=date]{
+    padding: 2px;
+}
+#cmbFechaNacimiento{
+    display: flex;
+    min-height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.btnRegistrar{
+    padding: 10px;
+    background-color: #D9D9D9;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+.btnRegistrar:hover{
+    cursor: pointer;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+}
