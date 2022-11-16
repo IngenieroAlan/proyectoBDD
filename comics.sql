@@ -29,7 +29,8 @@ CREATE TABLE usuario(
   usuario VARCHAR(50) NOT NULL UNIQUE,
   contrasena VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
-  fecha_nacimiento DATE NOT NULL
+  fecha_nacimiento DATE NOT NULL,
+  domicilio VARCHAR(200)
 );
 
 DROP TABLE IF EXISTS producto;
