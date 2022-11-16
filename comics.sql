@@ -30,7 +30,8 @@ CREATE TABLE usuario(
   contrasena VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
   fecha_nacimiento DATE NOT NULL,
-  domicilio VARCHAR(200)
+  domicilio VARCHAR(200),
+  num_telefonico VARCHAR(20)
 );
 
 DROP TABLE IF EXISTS producto;
