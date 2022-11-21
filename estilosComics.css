@@ -1,11 +1,61 @@
+.contenedor{
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+.contSuperior{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
 .estado{
     display: flex;
 }
-#activo{
-    background-color: green;
+#activo,#NoActivo{
     width: 10px;
     height: 10px;
     border-radius: 5px;
     margin-left: 10px;
-    margin-top: 4px;
+    margin-top: 5px;
+}
+#activo{
+    background-color: green;
+}
+#noActivo{
+    background-color: red;
+}
+.contSuperior img{
+    width: 280px;
+    height: 300px;
+    margin: 0 10px;
+}
+.descripcion{
+    text-align: left;
+    width: 80%;
+}
+.descripcion p{
+    width: 50%;
+}
+.estado p{
+    width: auto;
+}
+.contCapitulos{
+    margin: 2% auto;
+    width: 70%;
+    text-align: left;
+    border: solid 3px #000;
+}
+.capitulos{
+    background-color: #D9D9D9;
+    border: solid 1px #000;
+
+}
+.capitulos:hover{
+    cursor: pointer;
+    background-color: #9F9F9F;
+}
+.capitulos p {
+    font-weight: bolder;
+    padding: 10px;
 }
