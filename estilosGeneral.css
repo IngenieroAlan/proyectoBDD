@@ -3,11 +3,7 @@
     margin: 0;
     text-decoration: none;
     box-sizing: border-box;
-}
-
-@font-face{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    src: url(fuente/Inter.ttf);
+    font-family: 'Inter', sans-serif;
 }
 body{
     background-color: #9F9F9F;
