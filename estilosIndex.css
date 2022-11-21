@@ -1,0 +1,36 @@
+.catalogo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.comics{
+    width: 30%;
+    height:auto;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+    margin: 15px;
+}
+.catalogo .comics img{
+    width: 220px;
+    height: 280px;
+    border-radius: 30px;
+    margin-top: 8px;
+}
+.texto{
+    font-weight: bold;
+    font-size: 30px;
+}
+#visual{
+    margin-top: 17px;
+    margin-right: 10px;
+    margin-left: 50px;
+    width: 25px;
+    height: 25px;
+    border-radius: 0px;
+}
+.descripcion{
+    display: flex;
+}
