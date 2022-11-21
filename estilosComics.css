@@ -59,3 +59,45 @@
     font-weight: bolder;
     padding: 10px;
 }
+.pdfview{
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 70vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.titulo{
+    margin: 20px;
+    font-weight: bolder;
+    color: black;
+}
+.botones{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.botones button{
+    margin: 20px;
+    padding: 7px;
+    border-radius: 10px;
+    color: rgb(248, 204, 8);
+    background-color: #A01212;
+    border: solid 2px  rgb(248, 204, 8);
+}
+.botones button:hover{
+    cursor: pointer;
+}
+.contCapitulos a{
+    color: #000;
+}
+.regresar{
+    width: fit-content;
+    height: fit-content;
+    padding: 9px;
+    margin: 10px;
+    color: rgb(248, 204, 8);
+    background-color: #A01212;  
+    border-radius: 30px;
+    border: solid 2px  rgb(248, 204, 8);
+}
